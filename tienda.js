@@ -44,7 +44,7 @@ let articulos = [
   },
   {
     id: 3,
-    img: "./png/cocherojo.png",
+    img: "./png/cocheRojo.png",
     nombre: "Coche Moises",
     vendedor: "Brayan",
     precio: 650000,
@@ -68,7 +68,7 @@ let articulos = [
   },
   {
     id: 6,
-    img: "./png/comedorcompacto.png",
+    img: "./png/comedorCompacto.png",
     nombre: "Comedor Comp",
     vendedor: "Brayan",
     precio: 650000,
