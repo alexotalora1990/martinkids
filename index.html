@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tienda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./tienda.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img class="logo" src="./png/logo.png" alt="logo"> </img>
+
+            <h2>MARTIN KIDS</h2>
+            <ul id="menu">
+                <li><a href="index.html" class="menu1">Inicio</a> </li>
+                <li><a href="#" class="menu1">Contactenos</a></li>
+            </ul>
+
+            <button class="carrito"><i class="fas fa-shopping-cart"></i> </button>
+            <div class="carritoContainer">
+                <div class="carritoMenu">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>nombre</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Boton</th>
+                            </tr>
+                        </thead>
+                        <tbody id="carritoTabla">
+                        </tbody>
+                    </table>
+                    <div class="precioTotal">
+                        <p>Total: $</p>
+                        <p id="ptotal"></p>
+                    </div>
+                    <button class="vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Calidad Para Tus Bebés</h1>
+        <div id="container">
+
+        </div>
+
+    </main>
+    <footer>
+
+        <div class="redesFooter">Siguenos en nuestras redes sociales</div>
+        <div>
+            <p>Todos los derechos son reservados</p>
+        </div>
+
+
+
+
+    </footer>
+</body>
+
+</html>
