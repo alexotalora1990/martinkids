@@ -6,7 +6,7 @@ function pesoCol(amount) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const navMenu = document.querySelector(".navMenu");
+    
   const carrito = document.querySelector(".carrito");
   const carritoMenu = document.querySelector(".carritoMenu");
   
