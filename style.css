@@ -139,7 +139,7 @@ h3{
     right: -20px;
     background: white;
     border: #2c3e50 solid 1px;
-    /* display: none; */
+    display: none;
     padding-bottom: 20px;
   }
 .carritoContainer {
