@@ -59,8 +59,7 @@ nav ul{
     width: 80%;
     height: auto;
    border: solid 3px  #0f6df8 ;
-   /* border-radius: 10px; */
-   margin: 3%;
+     margin: 3%;
    background-color: #b3b5b9;
 }
 .texto{
@@ -89,7 +88,7 @@ nav ul{
 }
 .estrellas {
     color:  #f3f33c;
-    font-size: 21px;
+    font-size: 100%;
 }
 #carrito{
    
@@ -119,7 +118,7 @@ footer{
     color: red;
 }
 .promo{
-    /* float: right; */
+
     font-size: 150%;
     font-weight: bold;
 }
@@ -136,15 +135,18 @@ h3{
     height: auto;
     position: absolute;
     top: 121px;
-    right: -20px;
+    right: 5px;
     background: white;
     border: #2c3e50 solid 1px;
     display: none;
     padding-bottom: 20px;
   }
+  .carritoMenu.active {
+    display: block;
+}
 .carritoContainer {
-    position: relative;
-    z-index: 3;
+    position:relative;
+    
 }
 
 .carrito {
@@ -158,11 +160,14 @@ h3{
     color: rgb(201, 179, 179)
   ;
 }
-.carritoMenu.active {
-    display: block;
+#contador{
+    font-size: 50%;
+    position: absolute;
+    color: red;
 }
+
 table th {
-    width: 30em;
+    width: 90%;
 
 }
 
@@ -192,3 +197,48 @@ tbody {
     width: 97px;
     height: 84px;
 }
+@media(max-width: 1320px) {
+    .imagen{
+        width: 200px;
+    }
+
+}
+@media(max-width:1200px){
+    #container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        
+    }
+}
+@media(max-width:900px){
+    header h2{
+        font-size: 300%;
+    }
+.carrito {
+font-size: 130%;
+}
+}
+@media(max-width:800px){
+    #container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    h1{
+        font-size: 250%;
+    }
+    .menu1{
+        font-size: 100%;
+    }
+    header h2{
+        font-size: 250%;
+    }
+    .carrito {
+        font-size: 100%;
+        }
+}
+@media(max-width:550px){
+    #container{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }   
+    }
