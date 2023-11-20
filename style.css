@@ -58,14 +58,21 @@ nav ul{
 .contenedor{
     width: 80%;
     height: auto;
-   border: solid 3px  #0f6df8 ;
-     margin: 3%;
-   background-color: #b3b5b9;
+   /* border: solid 3px  #0f6df8 ; */
+     margin: 5%;  
+     border-radius: 14px;
+     background: #dddfe2;
+     box-shadow:  7px 7px 14px #9b9c9e,
+                  -7px -7px 14px #ffffff;
 }
+.contenedor:hover {
+    transform: scale(1.1); 
+  }
 .texto{
     padding: 3%;
     text-align: center;
-    background-color: #dfd8d8;      
+    border-top: 3px solid black; 
+    /* background-color: #dfd8d8;       */
 }
 .imagen{
     width: 250px;
@@ -87,8 +94,8 @@ nav ul{
    background-color: #4facf3;
 }
 .estrellas {
-    color:  #f3f33c;
-    font-size: 100%;
+    color:  #0f6df8 ;
+    font-size: 90%;
 }
 /* #carrito{
    
@@ -163,8 +170,8 @@ h3{
     cursor: pointer;
 }
 .carrito:hover {
-    color: rgb(201, 179, 179)
-  ;
+    color: rgb(201, 179, 179)  ;
+    transform: scale(1.2); 
 }
 .vaciar{
     border: none;
