@@ -1,5 +1,6 @@
 const contador = document.getElementById("contador");
-let totalContador=0;
+document.getElementById("contador").style.display = "none";
+let totalContador = 0;
 
 
 function pesoCol(amount) {
@@ -18,8 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
       carrito.setAttribute("aria-label", "Abrir Carrito");
     }
   });
+
   pintar();
 });
+
+
 
 let articulos = [
   {
@@ -185,10 +189,10 @@ function calcularTotalCarrito() {
   return total;
 }
 
-  
+
 function agregarTabla(item) {
   const objeto = carrito.find((articulo) => articulo.id === item.id);
-  
+
   if (objeto) {
     objeto.cantidad += 1;
     objeto.precioTotal = objeto.precioTotal + objeto.promo;
@@ -201,12 +205,18 @@ function agregarTabla(item) {
       cantidad: 1,
       precioTotal: item.promo,
     };
-    
+
     carrito.push(objeto);
-    console.log(objeto);
+
   }
   totalContador++;
-  contador.innerHTML = totalContador;
+  contador.innerHTML = totalContador
+  if (totalContador > 0) {
+    document.getElementById("contador").style.display = "block";
+  }
+  else if (totalContador == 0){
+    document.getElementById("contador").style.display = "none";
+  }
   document.getElementById("carritoTabla").innerHTML = "";
   pintarCarrito();
 }
@@ -248,33 +258,41 @@ function pintarCarrito() {
   totalElement.textContent = pesoCol(calcularTotalCarrito());
 }
 
-// function borrar(i) {
-//   let index = i;
-//   carrito.splice(index, 1);
-//   document.getElementById("carritoTabla").innerHTML = "";
-//   pintarCarrito();
-// totalContador-=1
-// contador.innerHTML =totalContador
-// }
-function borrar(i){
+
+function borrar(i) {
   let index = i;
-  if(carrito[index].cantidad > 1){
-    carrito[index].cantidad --
-    carrito[index].precioTotal -=carrito[index].promo
+  if (carrito[index].cantidad > 1) {
+    carrito[index].cantidad--
+    carrito[index].precioTotal -= carrito[index].promo
   }
   else {
     carrito.splice(index, 1);
   }
   document.getElementById("carritoTabla").innerHTML = "";
-    pintarCarrito();
-  totalContador-=1
-  contador.innerHTML =totalContador
+  pintarCarrito();
+  totalContador -= 1
+  contador.innerHTML = totalContador
+  if (totalContador > 0) {
+    document.getElementById("contador").style.display = "block";
+  }
+  else if(totalContador == 0)
+  document.getElementById("contador").style.display = "none";
+
 }
 
 function vaciarCarrito() {
   carrito = [];
   document.getElementById("carritoTabla").innerHTML = "";
   pintarCarrito();
-  totalContador=0
-contador.innerHTML =totalContador
+
+  totalContador = 0
+  contador.innerHTML = totalContador
+  if (totalContador > 0) {
+    document.getElementById("contador").style.display = "block";
+  }
+  else if(totalContador == 0)
+  document.getElementById("contador").style.display = "none";
+
+
 }
+
