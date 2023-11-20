@@ -1,4 +1,5 @@
-
+const contador = document.getElementById("contador");
+let totalContador=0;
 
 
 function pesoCol(amount) {
@@ -6,22 +7,17 @@ function pesoCol(amount) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    
   const carrito = document.querySelector(".carrito");
   const carritoMenu = document.querySelector(".carritoMenu");
-  
+
   carrito.addEventListener("click", () => {
     carritoMenu.classList.toggle("active");
     if (carritoMenu.classList.contains("active")) {
-        carrito.setAttribute("aria-label", "Cerrar Carrito");
+      carrito.setAttribute("aria-label", "Cerrar Carrito");
     } else {
-        carrito.setAttribute("aria-label", "Abrir Carrito");
+      carrito.setAttribute("aria-label", "Abrir Carrito");
     }
-
-});
-
-
-
+  });
   pintar();
 });
 
@@ -55,8 +51,8 @@ let articulos = [
     img: "./png/cocheRosa.png",
     nombre: "Coche Moises",
     vendedor: "Brayan",
-    precio: 650000,
-    promo: 500000,
+    precio: 680000,
+    promo: 530000,
   },
   {
     id: 5,
@@ -123,11 +119,8 @@ let articulos = [
     precio: 650000,
     promo: 500000,
   },
-
-
 ];
 let carrito = [];
-
 
 function pintar() {
   let fragment = document.createDocumentFragment();
@@ -139,8 +132,8 @@ function pintar() {
     let img = document.createElement("img");
     img.src = item.img;
     img.classList.add("imagen");
-    let vendedor = document.createElement("p")
-    vendedor.textContent = item.vendedor
+    let vendedor = document.createElement("p");
+    vendedor.textContent = item.vendedor;
     let h2 = document.createElement("h2");
     h2.textContent = item.nombre;
     h2.classList.add("h2");
@@ -152,115 +145,136 @@ function pintar() {
     promo.classList.add("promo");
     let estrellas = document.createElement("div");
     estrellas.classList.add("estrellas");
-    let estrella1 = document.createElement("i")
-    estrella1.classList.add("fas", "fa-star")
+    let estrella1 = document.createElement("i");
+    estrella1.classList.add("fas", "fa-star");
     let estrella2 = document.createElement("i");
-    estrella2.classList.add("fas", "fa-star")
+    estrella2.classList.add("fas", "fa-star");
     let estrella3 = document.createElement("i");
-    estrella3.classList.add("fas", "fa-star")
+    estrella3.classList.add("fas", "fa-star");
     let estrella4 = document.createElement("i");
-    estrella4.classList.add("fas", "fa-star-half-alt")
+    estrella4.classList.add("fas", "fa-star-half-alt");
     let estrella5 = document.createElement("i");
-    estrella5.classList.add("far", "fa-star")
+    estrella5.classList.add("far", "fa-star");
 
     let button = document.createElement("button");
     button.textContent = "agregar al carrito";
     button.classList.add("boton");
     button.addEventListener("click", () => {
       agregarTabla(item);
-
     });
 
     div.appendChild(img);
     div.appendChild(div2);
     div2.appendChild(h2);
     div2.appendChild(vendedor);
-    div2.appendChild(estrellas)
-    estrellas.appendChild(estrella1)
-    estrellas.appendChild(estrella2)
-    estrellas.appendChild(estrella3)
-    estrellas.appendChild(estrella4)
-    estrellas.appendChild(estrella5)
+    div2.appendChild(estrellas);
+    estrellas.appendChild(estrella1);
+    estrellas.appendChild(estrella2);
+    estrellas.appendChild(estrella3);
+    estrellas.appendChild(estrella4);
+    estrellas.appendChild(estrella5);
     div2.appendChild(precio);
     div2.appendChild(promo);
     div2.appendChild(button);
     fragment.appendChild(div);
   });
   document.getElementById("container").appendChild(fragment);
-
 }
-function calcularTotalCarrito(){
-let total= carrito.reduce((suma, item)=>suma + item.precioTotal, 0);
-return total;
+function calcularTotalCarrito() {
+  let total = carrito.reduce((suma, item) => suma + item.precioTotal, 0);
+  return total;
 }
 
+  
 function agregarTabla(item) {
-  const objeto = carrito.find((articulo) => articulo.id === item.id)
+  const objeto = carrito.find((articulo) => articulo.id === item.id);
+  
   if (objeto) {
-      objeto.cantidad += 1
-      objeto.precioTotal = objeto.precioTotal * objeto.cantidad; 
+    objeto.cantidad += 1;
+    objeto.precioTotal = objeto.precioTotal + objeto.promo;
   } else {
-      let objetos = {
-          id: item.id,
-          img: item.img,
-          nombre: item.nombre,
-          promo: item.promo,
-          cantidad: 1,
-          precioTotal: item.promo
-      }
-      carrito.push(objetos)
+    let objeto = {
+      id: item.id,
+      img: item.img,
+      nombre: item.nombre,
+      promo: item.promo,
+      cantidad: 1,
+      precioTotal: item.promo,
+    };
+    
+    carrito.push(objeto);
+    console.log(objeto);
   }
+  totalContador++;
+  contador.innerHTML = totalContador;
   document.getElementById("carritoTabla").innerHTML = "";
-  pintarCarrito()
+  pintarCarrito();
 }
 function pintarCarrito() {
   let frag = document.createDocumentFragment();
 
   carrito.forEach((item, index) => {
-      let tr = document.createElement("tr")
-      let timagen = document.createElement("td");
-      let imagen = document.createElement("img");
-      imagen.src = item.img;
-      timagen.appendChild(imagen);
-      imagen.classList.add("prev");
-      let tnombre = document.createElement("td");
-      tnombre.textContent = item.nombre;
-      let tprecio = document.createElement("td");
-      tprecio.textContent = pesoCol(item.precioTotal);
-      let tcantidad = document.createElement("td");
-      tcantidad.textContent = item.cantidad;
-      let tvaciar = document.createElement("td");
-      let boton = document.createElement("button");
-      boton.textContent = "Eliminar";
-      boton.classList.add("botonele");
-      boton.addEventListener("click", () => {
-          borrar(index);
-      })
-      tr.appendChild(timagen);
-      tr.appendChild(tnombre);
-      tr.appendChild(tprecio);
-      tr.appendChild(tcantidad);
-      tr.appendChild(tvaciar);
-      tvaciar.appendChild(boton);
-      frag.appendChild(tr);
-
-  })
+    let tr = document.createElement("tr");
+    let timagen = document.createElement("td");
+    let imagen = document.createElement("img");
+    imagen.src = item.img;
+    timagen.appendChild(imagen);
+    imagen.classList.add("prev");
+    let tnombre = document.createElement("td");
+    tnombre.textContent = item.nombre;
+    let tprecio = document.createElement("td");
+    tprecio.textContent = pesoCol(item.precioTotal);
+    let tcantidad = document.createElement("td");
+    tcantidad.textContent = item.cantidad;
+    let tvaciar = document.createElement("td");
+    let boton = document.createElement("button");
+    boton.textContent = "Eliminar";
+    boton.classList.add("botonele");
+    boton.addEventListener("click", () => {
+      borrar(index);
+    });
+    boton.textContent = "❌";
+    tr.appendChild(timagen);
+    tr.appendChild(tnombre);
+    tr.appendChild(tprecio);
+    tr.appendChild(tcantidad);
+    tr.appendChild(tvaciar);
+    tvaciar.appendChild(boton);
+    frag.appendChild(tr);
+  });
 
   document.getElementById("carritoTabla").appendChild(frag);
   const totalElement = document.getElementById("ptotal");
   totalElement.textContent = pesoCol(calcularTotalCarrito());
-  
 }
 
-function borrar(i) {
+// function borrar(i) {
+//   let index = i;
+//   carrito.splice(index, 1);
+//   document.getElementById("carritoTabla").innerHTML = "";
+//   pintarCarrito();
+// totalContador-=1
+// contador.innerHTML =totalContador
+// }
+function borrar(i){
   let index = i;
-  carrito.splice(index, 1);
+  if(carrito[index].cantidad > 1){
+    carrito[index].cantidad --
+    carrito[index].precioTotal -=carrito[index].promo
+  }
+  else {
+    carrito.splice(index, 1);
+  }
   document.getElementById("carritoTabla").innerHTML = "";
-  pintarCarrito();
+    pintarCarrito();
+  totalContador-=1
+  contador.innerHTML =totalContador
 }
 
 function vaciarCarrito() {
   carrito = [];
   document.getElementById("carritoTabla").innerHTML = "";
   pintarCarrito();
+  totalContador=0
+contador.innerHTML =totalContador
 }
